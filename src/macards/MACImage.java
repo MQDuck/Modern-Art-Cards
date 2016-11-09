@@ -21,6 +21,8 @@ package macards;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -33,21 +35,34 @@ public class MACImage
     final String title, artist, style, location;
     
     MACImage(final String img, final String ttl, final String artst, final String stl, final String loc)
-        throws IOException
     {
-        image = ImageIO.read(new File(img));
+        image = loadImage(img);
         title = ttl;
         artist = artst;
         style = stl;
         location = loc;
     }
     
-    MACImage(final String img, final String ttl, final String artst, final String stl) throws IOException
+    MACImage(final String img, final String ttl, final String artst, final String stl)
     {
-        image = ImageIO.read(new File(img));
+        image = loadImage(img);
         title = ttl;
         artist = artst;
         style = stl;
         location = "N/A";
+    }
+    
+    private BufferedImage loadImage(final String img)
+    {
+        System.out.println("loading " + img);
+        try
+        {
+            return ImageIO.read(new File(img));
+        }
+        catch(IOException ex)
+        {
+            Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }

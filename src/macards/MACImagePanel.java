@@ -159,10 +159,18 @@ public class MACImagePanel extends JPanel
         repaint();
     }
     
+    public String getTitle() { return current.title; }
+    public String getArtist() { return current.artist; }
+    public String getStyle() { return current.style; }
+    public String getPlace() { return current.place; }
+    
     @Override
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        if(current.image == null)
+            return;
+        
         final float ratioWidth = (float)getWidth() / current.image.getWidth();
         final float ratioHeight = (float)getHeight() / current.image.getHeight();
         if(ratioWidth < ratioHeight)

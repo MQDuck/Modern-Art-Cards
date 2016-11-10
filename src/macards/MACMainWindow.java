@@ -18,6 +18,9 @@
  */
 package macards;
 
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JFrame;
 
 /**
@@ -26,6 +29,7 @@ import javax.swing.JFrame;
  */
 public class MACMainWindow extends javax.swing.JFrame
 {
+    private static final String TEXT_BUTTON_SHOW = "Show";
 
     /**
      * Creates new form MACMainWindow
@@ -33,6 +37,13 @@ public class MACMainWindow extends javax.swing.JFrame
     public MACMainWindow()
     {
         initComponents();
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("RIGHT"), "right pressed");
+        imagePanel.getActionMap().put("right pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { jButtonNextActionPerformed(null); } });
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("LEFT"), "left pressed");
+        imagePanel.getActionMap().put("left pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { jButtonLastActionPerformed(null); } });
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
@@ -45,12 +56,61 @@ public class MACMainWindow extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jPanel4 = new javax.swing.JPanel();
+        jToggleButtonShow4 = new javax.swing.JToggleButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
         jPanelUI = new javax.swing.JPanel();
         jPanelNavigation = new javax.swing.JPanel();
         jButtonLast = new javax.swing.JButton();
         jButtonShuffle = new javax.swing.JButton();
         jButtonNext = new javax.swing.JButton();
+        jPanelTitle = new javax.swing.JPanel();
+        jToggleButtonShowTitle = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPaneTitle = new javax.swing.JTextPane();
+        jPanelArtist = new javax.swing.JPanel();
+        jToggleButtonShowArtist = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPaneArtist = new javax.swing.JTextPane();
+        jPanelStyle = new javax.swing.JPanel();
+        jToggleButtonShowStyle = new javax.swing.JToggleButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPaneStyle = new javax.swing.JTextPane();
+        jPanelLocation = new javax.swing.JPanel();
+        jToggleButtonShowLocation = new javax.swing.JToggleButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPaneLocation = new javax.swing.JTextPane();
         imagePanel = new macards.MACImagePanel();
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Title"));
+
+        jToggleButtonShow4.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShow4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jToggleButtonShow4ActionPerformed(evt);
+            }
+        });
+
+        jTextPane4.setEditable(false);
+        jScrollPane4.setViewportView(jTextPane4);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jToggleButtonShow4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToggleButtonShow4)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,16 +149,143 @@ public class MACMainWindow extends javax.swing.JFrame
         });
         jPanelNavigation.add(jButtonNext);
 
+        jPanelTitle.setBorder(javax.swing.BorderFactory.createTitledBorder("Title"));
+
+        jToggleButtonShowTitle.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowTitle.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                jToggleButtonShowTitleStateChanged(evt);
+            }
+        });
+
+        jTextPaneTitle.setEditable(false);
+        jScrollPane1.setViewportView(jTextPaneTitle);
+
+        javax.swing.GroupLayout jPanelTitleLayout = new javax.swing.GroupLayout(jPanelTitle);
+        jPanelTitle.setLayout(jPanelTitleLayout);
+        jPanelTitleLayout.setHorizontalGroup(
+            jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTitleLayout.createSequentialGroup()
+                .addComponent(jToggleButtonShowTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1))
+        );
+        jPanelTitleLayout.setVerticalGroup(
+            jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToggleButtonShowTitle)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanelArtist.setBorder(javax.swing.BorderFactory.createTitledBorder("Artist"));
+
+        jToggleButtonShowArtist.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowArtist.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                jToggleButtonShowArtistStateChanged(evt);
+            }
+        });
+
+        jTextPaneArtist.setEditable(false);
+        jScrollPane2.setViewportView(jTextPaneArtist);
+
+        javax.swing.GroupLayout jPanelArtistLayout = new javax.swing.GroupLayout(jPanelArtist);
+        jPanelArtist.setLayout(jPanelArtistLayout);
+        jPanelArtistLayout.setHorizontalGroup(
+            jPanelArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelArtistLayout.createSequentialGroup()
+                .addComponent(jToggleButtonShowArtist)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
+        );
+        jPanelArtistLayout.setVerticalGroup(
+            jPanelArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToggleButtonShowArtist)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanelStyle.setBorder(javax.swing.BorderFactory.createTitledBorder("Period Style"));
+
+        jToggleButtonShowStyle.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowStyle.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                jToggleButtonShowStyleStateChanged(evt);
+            }
+        });
+
+        jTextPaneStyle.setEditable(false);
+        jScrollPane3.setViewportView(jTextPaneStyle);
+
+        javax.swing.GroupLayout jPanelStyleLayout = new javax.swing.GroupLayout(jPanelStyle);
+        jPanelStyle.setLayout(jPanelStyleLayout);
+        jPanelStyleLayout.setHorizontalGroup(
+            jPanelStyleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStyleLayout.createSequentialGroup()
+                .addComponent(jToggleButtonShowStyle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3))
+        );
+        jPanelStyleLayout.setVerticalGroup(
+            jPanelStyleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToggleButtonShowStyle)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanelLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
+
+        jToggleButtonShowLocation.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowLocation.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                jToggleButtonShowLocationStateChanged(evt);
+            }
+        });
+
+        jTextPaneLocation.setEditable(false);
+        jScrollPane5.setViewportView(jTextPaneLocation);
+
+        javax.swing.GroupLayout jPanelLocationLayout = new javax.swing.GroupLayout(jPanelLocation);
+        jPanelLocation.setLayout(jPanelLocationLayout);
+        jPanelLocationLayout.setHorizontalGroup(
+            jPanelLocationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLocationLayout.createSequentialGroup()
+                .addComponent(jToggleButtonShowLocation)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5))
+        );
+        jPanelLocationLayout.setVerticalGroup(
+            jPanelLocationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToggleButtonShowLocation)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         javax.swing.GroupLayout jPanelUILayout = new javax.swing.GroupLayout(jPanelUI);
         jPanelUI.setLayout(jPanelUILayout);
         jPanelUILayout.setHorizontalGroup(
             jPanelUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelNavigation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+            .addComponent(jPanelNavigation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelArtist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelStyle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelUILayout.setVerticalGroup(
             jPanelUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUILayout.createSequentialGroup()
-                .addGap(0, 375, Short.MAX_VALUE)
+                .addComponent(jPanelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelStyle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jPanelNavigation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -109,7 +296,7 @@ public class MACMainWindow extends javax.swing.JFrame
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 416, Short.MAX_VALUE)
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,21 +321,71 @@ public class MACMainWindow extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButtonShow4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jToggleButtonShow4ActionPerformed
+    {//GEN-HEADEREND:event_jToggleButtonShow4ActionPerformed
+        System.out.println("The phantom button was pressed.");
+    }//GEN-LAST:event_jToggleButtonShow4ActionPerformed
+
+    private void jToggleButtonShowTitleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowTitleStateChanged
+    {//GEN-HEADEREND:event_jToggleButtonShowTitleStateChanged
+        if(jToggleButtonShowTitle.isSelected())
+            jTextPaneTitle.setText(imagePanel.getTitle());
+        else
+            jTextPaneTitle.setText("");
+    }//GEN-LAST:event_jToggleButtonShowTitleStateChanged
+
+    private void jToggleButtonShowArtistStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowArtistStateChanged
+    {//GEN-HEADEREND:event_jToggleButtonShowArtistStateChanged
+        if(jToggleButtonShowArtist.isSelected())
+            jTextPaneArtist.setText(imagePanel.getArtist());
+        else
+            jTextPaneArtist.setText("");
+    }//GEN-LAST:event_jToggleButtonShowArtistStateChanged
+
+    private void jToggleButtonShowStyleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowStyleStateChanged
+    {//GEN-HEADEREND:event_jToggleButtonShowStyleStateChanged
+        if(jToggleButtonShowStyle.isSelected())
+            jTextPaneStyle.setText(imagePanel.getStyle());
+        else
+            jTextPaneStyle.setText("");
+    }//GEN-LAST:event_jToggleButtonShowStyleStateChanged
+
+    private void jToggleButtonShowLocationStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowLocationStateChanged
+    {//GEN-HEADEREND:event_jToggleButtonShowLocationStateChanged
+        if(jToggleButtonShowLocation.isSelected())
+            jTextPaneLocation.setText(imagePanel.getPlace());
+        else
+            jTextPaneLocation.setText("");
+    }//GEN-LAST:event_jToggleButtonShowLocationStateChanged
+
     private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonNextActionPerformed
     {//GEN-HEADEREND:event_jButtonNextActionPerformed
         imagePanel.next();
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        hideAll();
     }//GEN-LAST:event_jButtonNextActionPerformed
 
     private void jButtonLastActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonLastActionPerformed
     {//GEN-HEADEREND:event_jButtonLastActionPerformed
         imagePanel.last();
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        hideAll();
     }//GEN-LAST:event_jButtonLastActionPerformed
 
     private void jButtonShuffleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonShuffleActionPerformed
     {//GEN-HEADEREND:event_jButtonShuffleActionPerformed
         imagePanel.shuffle();
+        hideAll();
     }//GEN-LAST:event_jButtonShuffleActionPerformed
 
+    private void hideAll()
+    {
+        jToggleButtonShowTitle.setSelected(false);
+        jToggleButtonShowArtist.setSelected(false);
+        jToggleButtonShowStyle.setSelected(false);
+        jToggleButtonShowLocation.setSelected(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -169,7 +406,27 @@ public class MACMainWindow extends javax.swing.JFrame
     private javax.swing.JButton jButtonLast;
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonShuffle;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelArtist;
+    private javax.swing.JPanel jPanelLocation;
     private javax.swing.JPanel jPanelNavigation;
+    private javax.swing.JPanel jPanelStyle;
+    private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPanel jPanelUI;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextPane jTextPaneArtist;
+    private javax.swing.JTextPane jTextPaneLocation;
+    private javax.swing.JTextPane jTextPaneStyle;
+    private javax.swing.JTextPane jTextPaneTitle;
+    private javax.swing.JToggleButton jToggleButtonShow4;
+    private javax.swing.JToggleButton jToggleButtonShowArtist;
+    private javax.swing.JToggleButton jToggleButtonShowLocation;
+    private javax.swing.JToggleButton jToggleButtonShowStyle;
+    private javax.swing.JToggleButton jToggleButtonShowTitle;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,15 +32,15 @@ import javax.imageio.ImageIO;
 public class MACImage
 {
     public final BufferedImage image;
-    final String title, artist, style, location;
+    final String title, artist, style, place;
     
-    MACImage(final String img, final String ttl, final String artst, final String stl, final String loc)
+    MACImage(final String img, final String ttl, final String artst, final String stl, final String plc)
     {
         image = loadImage(img);
         title = ttl;
         artist = artst;
         style = stl;
-        location = loc;
+        place = plc;
     }
     
     MACImage(final String img, final String ttl, final String artst, final String stl)
@@ -49,7 +49,7 @@ public class MACImage
         title = ttl;
         artist = artst;
         style = stl;
-        location = "N/A";
+        place = null;
     }
     
     private BufferedImage loadImage(final String img)

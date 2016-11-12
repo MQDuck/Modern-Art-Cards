@@ -19,11 +19,8 @@
 package macards;
 
 import java.awt.Graphics;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -42,93 +39,93 @@ public class MACImagePanel extends JPanel
         images.add(new MACImage(
             "Bath_of_Psyche.jpeg",
             "The Bath of Psyche",
-            "Frederic Leighton",
+            "Leighton, Frederic",
             "Aestheticism"));
         images.add(new MACImage(
             "Madame_X.jpeg",
             "Madame X (Mme Pierre Gautreau)",
-            "John Singer Sargent",
+            "Sargent, John Singer",
             "Tonalism"));
         images.add(new MACImage(
             "A_Sunday_Afternoon.jpeg",
             "A Sunday Afternoon on the Island of La Grande Jatte",
-            "Georges Seurat",
+            "Seurat, Georges",
             "Pointillism"));
         images.add(new MACImage(
             "The_Apparition.jpeg",
             "The Apparition",
-            "Gustave Moreau",
+            "Moreau, Gustave",
             "Symbolism"));
         images.add(new MACImage(
             "Where_Do_We_Come_From.jpeg",
             "Where do we come fron? What are we? Where are we going?",
-            "Paul Gauguin",
+            "Gauguin, Paul",
             "Synthetism"));
         images.add(new MACImage(
             "The_Talisman.jpeg",
             "The Talisman (Landscape of the Bois d’Amour)",
-            "Paul Sérusier",
+            "Sérusier, Paul",
             "Nabis"));
         images.add(new MACImage(
             "Moulin_Rouge.jpeg",
             "Moulin Rouge—La Goulue",
-            "Henri de Toulouse-Lautrec",
+            "Toulouse-Lautrec, Henri",
             "Post-Impressionism"));
         images.add(new MACImage(
             "The_Night_Cafe.jpeg",
             "The Night Café",
-            "Vincent van Gogh",
+            "Van Gogh, Vincent",
             "Post-Impressionism"));
         images.add(new MACImage(
             "Basket_of_Apples.jpeg",
             "Still Life with Basket of Apples",
-            "Paul Cézanne",
+            "Cézanne, Paul",
             "Post-Impressionism"));
         images.add(new MACImage(
             "Chatting_Women.png",
             "Chatting Women",
-            "Camille Claudel",
+            "Claudel, Camille",
             "Post-Impressionism"));
         images.add(new MACImage(
             "Tropon.jpeg",
             "Tropon",
-            "Hendry van de Velde",
+            "Van de Velde, Hendry",
             "Art Nouveau"));
         images.add(new MACImage(
             "Stairwell_of_Tassel_House.jpeg",
             "Stairwell of Tassel House",
-            "Victor Horta",
+            "Horta, Victor",
             "Art Nouveau",
             "Brussels, Belgium"));
         images.add(new MACImage(
             "Adele_Blach-Bauer.jpeg",
             "Adele Blach-Bauer (Woman in Gold)",
-            "Gustav Klimt",
+            "Klimt, Gustav",
             "Vienna Secession"));
         images.add(new MACImage(
             "Dance_of_Life.jpeg",
             "The Dance of Life",
-            "Edvard Munch",
+            "Munch, Edvard",
             "Late Symbolism"));
         images.add(new MACImage(
             "Green_Line.jpeg",
             "Portrait of Madame Matisse / The Green Line",
-            "Henri Matisse",
+            "Matisse, Henri",
             "Fauvism"));
         images.add(new MACImage(
             "London_Bridge.jpeg",
             "London Bridge",
-            "André Derain",
+            "Derain, André",
             "Fauvism"));
         images.add(new MACImage(
             "Blue_Nude.jpeg",
             "Blue Nude: Memory of Biskra",
-            "Henri Matisse",
+            "Matisse, Henri",
             "Modernism"));
         images.add(new MACImage(
             "Harmony_in_Red.jpeg",
             "Harmony in Red (The Dessert)",
-            "Henri Matisse",
+            "Matisse, Henri",
             "Modernism"));
             
             index = 0;
@@ -168,8 +165,8 @@ public class MACImagePanel extends JPanel
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        if(current.image == null)
-            return;
+        //if(current.image == null)
+        //    return;
         
         final float ratioWidth = (float)getWidth() / current.image.getWidth();
         final float ratioHeight = (float)getHeight() / current.image.getHeight();

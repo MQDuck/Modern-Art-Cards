@@ -39,11 +39,34 @@ public class MACMainWindow extends javax.swing.JFrame
         initComponents();
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("RIGHT"), "right pressed");
         imagePanel.getActionMap().put("right pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { jButtonNextActionPerformed(null); } });
+            { public void actionPerformed(ActionEvent evt) { nextImage(); } });
+        
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("LEFT"), "left pressed");
         imagePanel.getActionMap().put("left pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { jButtonLastActionPerformed(null); } });
+            { public void actionPerformed(ActionEvent evt) { lastImage(); } });
+        
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("S"), "S pressed");
+        imagePanel.getActionMap().put("S pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { shuffleImages(); } });
+        
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("1"), "1 pressed");
+        imagePanel.getActionMap().put("1 pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { toggleTitle(); } });
+        
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("2"), "2 pressed");
+        imagePanel.getActionMap().put("2 pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { toggleArtist(); } });
+        
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("3"), "3 pressed");
+        imagePanel.getActionMap().put("3 pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { toggleStyle(); } });
+        
+        imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("4"), "4 pressed");
+        imagePanel.getActionMap().put("4 pressed", new AbstractAction()
+            { public void actionPerformed(ActionEvent evt) { toggleLocation(); } });
+        
         jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
@@ -120,6 +143,7 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelNavigation.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonLast.setText("<--");
+        jButtonLast.setFocusable(false);
         jButtonLast.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -130,6 +154,7 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelNavigation.add(jButtonLast);
 
         jButtonShuffle.setText("Shuffle");
+        jButtonShuffle.setFocusable(false);
         jButtonShuffle.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -140,6 +165,7 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelNavigation.add(jButtonShuffle);
 
         jButtonNext.setText("-->");
+        jButtonNext.setFocusable(false);
         jButtonNext.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -150,8 +176,10 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelNavigation.add(jButtonNext);
 
         jPanelTitle.setBorder(javax.swing.BorderFactory.createTitledBorder("Title"));
+        jPanelTitle.setFocusable(false);
 
         jToggleButtonShowTitle.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowTitle.setFocusable(false);
         jToggleButtonShowTitle.addChangeListener(new javax.swing.event.ChangeListener()
         {
             public void stateChanged(javax.swing.event.ChangeEvent evt)
@@ -179,8 +207,10 @@ public class MACMainWindow extends javax.swing.JFrame
         );
 
         jPanelArtist.setBorder(javax.swing.BorderFactory.createTitledBorder("Artist"));
+        jPanelArtist.setFocusable(false);
 
         jToggleButtonShowArtist.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowArtist.setFocusable(false);
         jToggleButtonShowArtist.addChangeListener(new javax.swing.event.ChangeListener()
         {
             public void stateChanged(javax.swing.event.ChangeEvent evt)
@@ -199,7 +229,7 @@ public class MACMainWindow extends javax.swing.JFrame
             .addGroup(jPanelArtistLayout.createSequentialGroup()
                 .addComponent(jToggleButtonShowArtist)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
+                .addComponent(jScrollPane2))
         );
         jPanelArtistLayout.setVerticalGroup(
             jPanelArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,8 +238,10 @@ public class MACMainWindow extends javax.swing.JFrame
         );
 
         jPanelStyle.setBorder(javax.swing.BorderFactory.createTitledBorder("Period Style"));
+        jPanelStyle.setFocusable(false);
 
         jToggleButtonShowStyle.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowStyle.setFocusable(false);
         jToggleButtonShowStyle.addChangeListener(new javax.swing.event.ChangeListener()
         {
             public void stateChanged(javax.swing.event.ChangeEvent evt)
@@ -237,8 +269,10 @@ public class MACMainWindow extends javax.swing.JFrame
         );
 
         jPanelLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
+        jPanelLocation.setFocusable(false);
 
         jToggleButtonShowLocation.setText(TEXT_BUTTON_SHOW);
+        jToggleButtonShowLocation.setFocusable(false);
         jToggleButtonShowLocation.addChangeListener(new javax.swing.event.ChangeListener()
         {
             public void stateChanged(javax.swing.event.ChangeEvent evt)
@@ -269,7 +303,7 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelUI.setLayout(jPanelUILayout);
         jPanelUILayout.setHorizontalGroup(
             jPanelUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelNavigation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelNavigation, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
             .addComponent(jPanelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelArtist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelStyle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,7 +330,7 @@ public class MACMainWindow extends javax.swing.JFrame
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
+            .addGap(0, 386, Short.MAX_VALUE)
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,54 +362,37 @@ public class MACMainWindow extends javax.swing.JFrame
 
     private void jToggleButtonShowTitleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowTitleStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowTitleStateChanged
-        if(jToggleButtonShowTitle.isSelected())
-            jTextPaneTitle.setText(imagePanel.getTitle());
-        else
-            jTextPaneTitle.setText("");
+        showTitle(jToggleButtonShowTitle.isSelected());
     }//GEN-LAST:event_jToggleButtonShowTitleStateChanged
 
     private void jToggleButtonShowArtistStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowArtistStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowArtistStateChanged
-        if(jToggleButtonShowArtist.isSelected())
-            jTextPaneArtist.setText(imagePanel.getArtist());
-        else
-            jTextPaneArtist.setText("");
+        showArtist(jToggleButtonShowArtist.isSelected());
     }//GEN-LAST:event_jToggleButtonShowArtistStateChanged
 
     private void jToggleButtonShowStyleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowStyleStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowStyleStateChanged
-        if(jToggleButtonShowStyle.isSelected())
-            jTextPaneStyle.setText(imagePanel.getStyle());
-        else
-            jTextPaneStyle.setText("");
+        showStyle(jToggleButtonShowStyle.isSelected());
     }//GEN-LAST:event_jToggleButtonShowStyleStateChanged
 
     private void jToggleButtonShowLocationStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowLocationStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowLocationStateChanged
-        if(jToggleButtonShowLocation.isSelected())
-            jTextPaneLocation.setText(imagePanel.getPlace());
-        else
-            jTextPaneLocation.setText("");
+        showLocation(jToggleButtonShowLocation.isSelected());
     }//GEN-LAST:event_jToggleButtonShowLocationStateChanged
 
     private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonNextActionPerformed
     {//GEN-HEADEREND:event_jButtonNextActionPerformed
-        imagePanel.next();
-        jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAll();
+        nextImage();
     }//GEN-LAST:event_jButtonNextActionPerformed
 
     private void jButtonLastActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonLastActionPerformed
     {//GEN-HEADEREND:event_jButtonLastActionPerformed
-        imagePanel.last();
-        jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAll();
+        lastImage();
     }//GEN-LAST:event_jButtonLastActionPerformed
 
     private void jButtonShuffleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonShuffleActionPerformed
     {//GEN-HEADEREND:event_jButtonShuffleActionPerformed
-        imagePanel.shuffle();
-        hideAll();
+        shuffleImages();
     }//GEN-LAST:event_jButtonShuffleActionPerformed
 
     private void hideAll()
@@ -384,6 +401,78 @@ public class MACMainWindow extends javax.swing.JFrame
         jToggleButtonShowArtist.setSelected(false);
         jToggleButtonShowStyle.setSelected(false);
         jToggleButtonShowLocation.setSelected(false);
+    }
+    
+    private void showTitle(final boolean show)
+    {
+        if(show)
+            jTextPaneTitle.setText(imagePanel.getTitle());
+        else
+            jTextPaneTitle.setText("");
+    }
+    
+    private void toggleTitle()
+    {
+        jToggleButtonShowTitle.setSelected(!jToggleButtonShowTitle.isSelected());
+    }
+    
+    private void showArtist(final boolean show)
+    {
+        if(show)
+            jTextPaneArtist.setText(imagePanel.getArtist());
+        else
+            jTextPaneArtist.setText("");
+    }
+    
+    private void toggleArtist()
+    {
+        jToggleButtonShowArtist.setSelected(!jToggleButtonShowArtist.isSelected());
+    }
+    
+    private void showStyle(final boolean show)
+    {
+        if(show)
+            jTextPaneStyle.setText(imagePanel.getStyle());
+        else
+            jTextPaneStyle.setText("");
+    }
+    
+    private void toggleStyle()
+    {
+        jToggleButtonShowStyle.setSelected(!jToggleButtonShowStyle.isSelected());
+    }
+    
+    private void showLocation(final boolean show)
+    {
+        if(show)
+            jTextPaneLocation.setText(imagePanel.getPlace());
+        else
+            jTextPaneLocation.setText("");
+    }
+    
+    private void toggleLocation()
+    {
+        jToggleButtonShowLocation.setSelected(!jToggleButtonShowLocation.isSelected());
+    }
+    
+    private void nextImage()
+    {
+        imagePanel.next();
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        hideAll();
+    }
+    
+    private void lastImage()
+    {
+        imagePanel.last();
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        hideAll();
+    }
+    
+    private void shuffleImages()
+    {
+        imagePanel.shuffle();
+        hideAll();
     }
     
     /**

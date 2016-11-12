@@ -57,7 +57,7 @@ public class MACImage
         System.out.println("loading " + img);
         try
         {
-            return ImageIO.read(new File(img));
+            return ImageIO.read(getClass().getResource(img));
         }
         catch(IOException ex)
         {

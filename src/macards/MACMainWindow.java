@@ -142,8 +142,10 @@ public class MACMainWindow extends javax.swing.JFrame
         jPanelNavigation.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanelNavigation.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButtonLast.setText("<--");
+        jButtonLast.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
+        jButtonLast.setText("←");
         jButtonLast.setFocusable(false);
+        jButtonLast.setPreferredSize(new java.awt.Dimension(32, 29));
         jButtonLast.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -164,8 +166,10 @@ public class MACMainWindow extends javax.swing.JFrame
         });
         jPanelNavigation.add(jButtonShuffle);
 
-        jButtonNext.setText("-->");
+        jButtonNext.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
+        jButtonNext.setText("→");
         jButtonNext.setFocusable(false);
+        jButtonNext.setPreferredSize(new java.awt.Dimension(32, 29));
         jButtonNext.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)

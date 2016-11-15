@@ -29,7 +29,7 @@ public class MACImageList extends ArrayList<MACImage>
     public void loadImages(final boolean createThread)
     {
         if(createThread)
-            (new Thread() { @Override public void run() { loadImages(); } }).start();
+            ( new Thread() {@Override public void run() { loadImages(); }} ).start();
         else
             loadImages();
     }

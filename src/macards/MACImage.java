@@ -29,23 +29,25 @@ import javax.imageio.ImageIO;
  * @author Jeffrey Thomas Piercy <mqduck@mqduck.net>
  */
 public class MACImage
-{
+{   
     private BufferedImage image = null;
     private boolean loading = false;
     final public String file, title, artist, style, place;
     
-    MACImage(final String img, final String ttl, final String artst, final String stl, final String plc)
+    private static final int LOAD_WAIT_SLEEP_TIME = 10;
+    
+    MACImage(final String fl, final String ttl, final String artst, final String stl, final String plc)
     {
-        file = img;
+        file = fl;
         title = ttl;
         artist = artst;
         style = stl;
         place = plc;
     }
     
-    MACImage(final String img, final String ttl, final String artst, final String stl)
+    MACImage(final String fl, final String ttl, final String artst, final String stl)
     {
-        file = img;
+        file = fl;
         title = ttl;
         artist = artst;
         style = stl;
@@ -58,9 +60,7 @@ public class MACImage
         return image;
     }
     
-    public void loadImage() { loadImage(file); }
-    
-    private void loadImage(final String fl)
+    public void loadImage()
     {
         if(image != null)
             return;
@@ -71,8 +71,8 @@ public class MACImage
         }
         
         loading = true;
-        System.out.println("loading " + fl);
-        try { image = ImageIO.read(getClass().getResource(fl)); }
+        System.out.println("loading " + file);
+        try { image = ImageIO.read(getClass().getResource(file)); }
         catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
         loading = false;
     }
@@ -82,7 +82,7 @@ public class MACImage
         try
         {
             while(image == null)
-                Thread.sleep(10);
+                Thread.sleep(LOAD_WAIT_SLEEP_TIME);
         }
         catch(InterruptedException ex)
         {

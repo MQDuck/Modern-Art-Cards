@@ -189,6 +189,7 @@ public class MACMainWindow extends javax.swing.JFrame
         });
 
         jTextPaneTitle.setEditable(false);
+        jTextPaneTitle.setFocusable(false);
         jScrollPane1.setViewportView(jTextPaneTitle);
 
         javax.swing.GroupLayout jPanelTitleLayout = new javax.swing.GroupLayout(jPanelTitle);
@@ -218,6 +219,8 @@ public class MACMainWindow extends javax.swing.JFrame
                 jToggleButtonShowArtistStateChanged(evt);
             }
         });
+
+        jScrollPane2.setFocusable(false);
 
         jTextPaneArtist.setEditable(false);
         jScrollPane2.setViewportView(jTextPaneArtist);
@@ -251,6 +254,7 @@ public class MACMainWindow extends javax.swing.JFrame
         });
 
         jTextPaneStyle.setEditable(false);
+        jTextPaneStyle.setFocusable(false);
         jScrollPane3.setViewportView(jTextPaneStyle);
 
         javax.swing.GroupLayout jPanelStyleLayout = new javax.swing.GroupLayout(jPanelStyle);
@@ -282,6 +286,7 @@ public class MACMainWindow extends javax.swing.JFrame
         });
 
         jTextPaneLocation.setEditable(false);
+        jTextPaneLocation.setFocusable(false);
         jScrollPane5.setViewportView(jTextPaneLocation);
 
         javax.swing.GroupLayout jPanelLocationLayout = new javax.swing.GroupLayout(jPanelLocation);

@@ -221,6 +221,7 @@
                 <Component class="javax.swing.JTextPane" name="jTextPaneTitle">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -267,6 +268,9 @@
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -331,6 +335,7 @@
                 <Component class="javax.swing.JTextPane" name="jTextPaneStyle">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -386,6 +391,7 @@
                 <Component class="javax.swing.JTextPane" name="jTextPaneLocation">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>

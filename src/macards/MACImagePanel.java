@@ -30,7 +30,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class MACImagePanel extends JPanel
 {
-    public ArrayList<MACImage> images = new ArrayList<>();
+    //public ArrayList<MACImage> images = new ArrayList<>();
+    public MACImageList images = new MACImageList();
     int index;
     MACImage current;
     
@@ -128,8 +129,9 @@ public class MACImagePanel extends JPanel
             "Matisse, Henri",
             "Modernism"));
             
-            index = 0;
-            current = images.get(index);
+        images.loadImages(true);
+        index = 0;
+        current = images.get(index);
     }
     
     public void shuffle()
@@ -165,16 +167,16 @@ public class MACImagePanel extends JPanel
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        //if(current.image == null)
+        //if(current.getImage() == null)
         //    return;
         
-        final float ratioWidth = (float)getWidth() / current.image.getWidth();
-        final float ratioHeight = (float)getHeight() / current.image.getHeight();
+        final float ratioWidth = (float)getWidth() / current.getImage().getWidth();
+        final float ratioHeight = (float)getHeight() / current.getImage().getHeight();
         if(ratioWidth < ratioHeight)
-            g.drawImage(current.image, 0, (int)(getHeight() - current.image.getHeight() * ratioWidth) / 2,
-                        getWidth(), (int)(current.image.getHeight() * ratioWidth), this);
+            g.drawImage(current.getImage(), 0, (int)(getHeight() - current.getImage().getHeight() * ratioWidth) / 2,
+                        getWidth(), (int)(current.getImage().getHeight() * ratioWidth), this);
         else
-            g.drawImage(current.image, (int)(getWidth() - current.image.getWidth() * ratioHeight) / 2, 0,
-                        (int)(current.image.getWidth() * ratioHeight), getHeight(), this);
+            g.drawImage(current.getImage(), (int)(getWidth() - current.getImage().getWidth() * ratioHeight) / 2, 0,
+                        (int)(current.getImage().getWidth() * ratioHeight), getHeight(), this);
     }
 }

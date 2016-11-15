@@ -19,7 +19,6 @@
 package macards;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +30,13 @@ import javax.imageio.ImageIO;
  */
 public class MACImage
 {
-    public final BufferedImage image;
-    final String title, artist, style, place;
+    private BufferedImage image = null;
+    private boolean loading = false;
+    final public String file, title, artist, style, place;
     
     MACImage(final String img, final String ttl, final String artst, final String stl, final String plc)
     {
-        image = loadImage(img);
+        file = img;
         title = ttl;
         artist = artst;
         style = stl;
@@ -45,24 +45,48 @@ public class MACImage
     
     MACImage(final String img, final String ttl, final String artst, final String stl)
     {
-        image = loadImage(img);
+        file = img;
         title = ttl;
         artist = artst;
         style = stl;
         place = null;
     }
     
-    private BufferedImage loadImage(final String img)
+    public final BufferedImage getImage()
     {
-        System.out.println("loading " + img);
+        loadImage();
+        return image;
+    }
+    
+    public void loadImage() { loadImage(file); }
+    
+    private void loadImage(final String fl)
+    {
+        if(image != null)
+            return;
+        if(loading)
+        {
+            waitForImageLoad();
+            return;
+        }
+        
+        loading = true;
+        System.out.println("loading " + fl);
+        try { image = ImageIO.read(getClass().getResource(fl)); }
+        catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
+        loading = false;
+    }
+    
+    private void waitForImageLoad()
+    {
         try
         {
-            return ImageIO.read(getClass().getResource(img));
+            while(image == null)
+                Thread.sleep(10);
         }
-        catch(IOException ex)
+        catch(InterruptedException ex)
         {
             Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
     }
 }

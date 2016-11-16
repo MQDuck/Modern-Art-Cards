@@ -18,10 +18,14 @@
  */
 package macards;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFrame;
+import javax.swing.JTextPane;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -51,23 +55,29 @@ public class MACMainWindow extends javax.swing.JFrame
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("1"), "1 pressed");
         imagePanel.getActionMap().put("1 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleTitle(); } });
+            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowTitle); } });
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("2"), "2 pressed");
         imagePanel.getActionMap().put("2 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleArtist(); } });
+            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowArtist); } });
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("3"), "3 pressed");
         imagePanel.getActionMap().put("3 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleStyle(); } });
+            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowStyle); } });
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("4"), "4 pressed");
         imagePanel.getActionMap().put("4 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleLocation(); } });
+            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowLocation); } });
         
         jPanelLocation.setVisible(imagePanel.getPlace() != null);
         
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        final Rectangle maxWindow = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        setSize(maxWindow.width, maxWindow.height);
+        jSplitPaneMain.setDividerLocation(  getWidth()
+                                          - jSplitPaneMain.getInsets().right
+                                          - jSplitPaneMain.getDividerSize()
+                                          - 481);
     }
 
     /**
@@ -79,10 +89,8 @@ public class MACMainWindow extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jPanel4 = new javax.swing.JPanel();
-        jToggleButtonShow4 = new javax.swing.JToggleButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        jSplitPaneMain = new javax.swing.JSplitPane();
+        imagePanel = new macards.MACImagePanel();
         jPanelUI = new javax.swing.JPanel();
         jPanelNavigation = new javax.swing.JPanel();
         jButtonLast = new javax.swing.JButton();
@@ -90,52 +98,42 @@ public class MACMainWindow extends javax.swing.JFrame
         jButtonNext = new javax.swing.JButton();
         jPanelTitle = new javax.swing.JPanel();
         jToggleButtonShowTitle = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneTitle = new javax.swing.JScrollPane();
         jTextPaneTitle = new javax.swing.JTextPane();
         jPanelArtist = new javax.swing.JPanel();
         jToggleButtonShowArtist = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPaneArtist = new javax.swing.JScrollPane();
         jTextPaneArtist = new javax.swing.JTextPane();
         jPanelStyle = new javax.swing.JPanel();
         jToggleButtonShowStyle = new javax.swing.JToggleButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPaneStyle = new javax.swing.JScrollPane();
         jTextPaneStyle = new javax.swing.JTextPane();
         jPanelLocation = new javax.swing.JPanel();
         jToggleButtonShowLocation = new javax.swing.JToggleButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPaneLocation = new javax.swing.JScrollPane();
         jTextPaneLocation = new javax.swing.JTextPane();
-        imagePanel = new macards.MACImagePanel();
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Title"));
-
-        jToggleButtonShow4.setText(TEXT_BUTTON_SHOW);
-        jToggleButtonShow4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jToggleButtonShow4ActionPerformed(evt);
-            }
-        });
-
-        jTextPane4.setEditable(false);
-        jScrollPane4.setViewportView(jTextPane4);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jToggleButtonShow4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToggleButtonShow4)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jSplitPaneMain.setDividerLocation(500);
+        jSplitPaneMain.setResizeWeight(1.0);
+        jSplitPaneMain.setContinuousLayout(true);
+
+        imagePanel.setBackground(new java.awt.Color(0, 0, 0));
+        imagePanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
+        imagePanel.setLayout(imagePanelLayout);
+        imagePanelLayout.setHorizontalGroup(
+            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        imagePanelLayout.setVerticalGroup(
+            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jSplitPaneMain.setLeftComponent(imagePanel);
 
         jPanelUI.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -194,7 +192,7 @@ public class MACMainWindow extends javax.swing.JFrame
 
         jTextPaneTitle.setEditable(false);
         jTextPaneTitle.setFocusable(false);
-        jScrollPane1.setViewportView(jTextPaneTitle);
+        jScrollPaneTitle.setViewportView(jTextPaneTitle);
 
         javax.swing.GroupLayout jPanelTitleLayout = new javax.swing.GroupLayout(jPanelTitle);
         jPanelTitle.setLayout(jPanelTitleLayout);
@@ -203,12 +201,12 @@ public class MACMainWindow extends javax.swing.JFrame
             .addGroup(jPanelTitleLayout.createSequentialGroup()
                 .addComponent(jToggleButtonShowTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPaneTitle))
         );
         jPanelTitleLayout.setVerticalGroup(
             jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToggleButtonShowTitle)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPaneTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanelArtist.setBorder(javax.swing.BorderFactory.createTitledBorder("Artist"));
@@ -224,10 +222,10 @@ public class MACMainWindow extends javax.swing.JFrame
             }
         });
 
-        jScrollPane2.setFocusable(false);
+        jScrollPaneArtist.setFocusable(false);
 
         jTextPaneArtist.setEditable(false);
-        jScrollPane2.setViewportView(jTextPaneArtist);
+        jScrollPaneArtist.setViewportView(jTextPaneArtist);
 
         javax.swing.GroupLayout jPanelArtistLayout = new javax.swing.GroupLayout(jPanelArtist);
         jPanelArtist.setLayout(jPanelArtistLayout);
@@ -236,12 +234,12 @@ public class MACMainWindow extends javax.swing.JFrame
             .addGroup(jPanelArtistLayout.createSequentialGroup()
                 .addComponent(jToggleButtonShowArtist)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2))
+                .addComponent(jScrollPaneArtist))
         );
         jPanelArtistLayout.setVerticalGroup(
             jPanelArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToggleButtonShowArtist)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPaneArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanelStyle.setBorder(javax.swing.BorderFactory.createTitledBorder("Period Style"));
@@ -259,7 +257,7 @@ public class MACMainWindow extends javax.swing.JFrame
 
         jTextPaneStyle.setEditable(false);
         jTextPaneStyle.setFocusable(false);
-        jScrollPane3.setViewportView(jTextPaneStyle);
+        jScrollPaneStyle.setViewportView(jTextPaneStyle);
 
         javax.swing.GroupLayout jPanelStyleLayout = new javax.swing.GroupLayout(jPanelStyle);
         jPanelStyle.setLayout(jPanelStyleLayout);
@@ -268,12 +266,12 @@ public class MACMainWindow extends javax.swing.JFrame
             .addGroup(jPanelStyleLayout.createSequentialGroup()
                 .addComponent(jToggleButtonShowStyle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3))
+                .addComponent(jScrollPaneStyle))
         );
         jPanelStyleLayout.setVerticalGroup(
             jPanelStyleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToggleButtonShowStyle)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPaneStyle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanelLocation.setBorder(javax.swing.BorderFactory.createTitledBorder("Location"));
@@ -291,7 +289,7 @@ public class MACMainWindow extends javax.swing.JFrame
 
         jTextPaneLocation.setEditable(false);
         jTextPaneLocation.setFocusable(false);
-        jScrollPane5.setViewportView(jTextPaneLocation);
+        jScrollPaneLocation.setViewportView(jTextPaneLocation);
 
         javax.swing.GroupLayout jPanelLocationLayout = new javax.swing.GroupLayout(jPanelLocation);
         jPanelLocation.setLayout(jPanelLocationLayout);
@@ -300,19 +298,19 @@ public class MACMainWindow extends javax.swing.JFrame
             .addGroup(jPanelLocationLayout.createSequentialGroup()
                 .addComponent(jToggleButtonShowLocation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5))
+                .addComponent(jScrollPaneLocation))
         );
         jPanelLocationLayout.setVerticalGroup(
             jPanelLocationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToggleButtonShowLocation)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPaneLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPanelUILayout = new javax.swing.GroupLayout(jPanelUI);
         jPanelUI.setLayout(jPanelUILayout);
         jPanelUILayout.setHorizontalGroup(
             jPanelUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelNavigation, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jPanelNavigation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelArtist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelStyle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -332,61 +330,40 @@ public class MACMainWindow extends javax.swing.JFrame
                 .addComponent(jPanelNavigation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        imagePanel.setBackground(new java.awt.Color(0, 0, 0));
-        imagePanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
-        imagePanel.setLayout(imagePanelLayout);
-        imagePanelLayout.setHorizontalGroup(
-            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
-        );
-        imagePanelLayout.setVerticalGroup(
-            imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jSplitPaneMain.setRightComponent(jPanelUI);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jSplitPaneMain)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPaneMain)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonShow4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jToggleButtonShow4ActionPerformed
-    {//GEN-HEADEREND:event_jToggleButtonShow4ActionPerformed
-        System.out.println("The phantom button was pressed.");
-    }//GEN-LAST:event_jToggleButtonShow4ActionPerformed
-
     private void jToggleButtonShowTitleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowTitleStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowTitleStateChanged
-        showTitle(jToggleButtonShowTitle.isSelected());
+        showAttribute(jToggleButtonShowTitle, jTextPaneTitle, imagePanel.getTitle());
     }//GEN-LAST:event_jToggleButtonShowTitleStateChanged
 
     private void jToggleButtonShowArtistStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowArtistStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowArtistStateChanged
-        showArtist(jToggleButtonShowArtist.isSelected());
+        showAttribute(jToggleButtonShowArtist, jTextPaneArtist, imagePanel.getArtist());
     }//GEN-LAST:event_jToggleButtonShowArtistStateChanged
 
     private void jToggleButtonShowStyleStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowStyleStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowStyleStateChanged
-        showStyle(jToggleButtonShowStyle.isSelected());
+        showAttribute(jToggleButtonShowStyle, jTextPaneStyle, imagePanel.getStyle());
     }//GEN-LAST:event_jToggleButtonShowStyleStateChanged
 
     private void jToggleButtonShowLocationStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_jToggleButtonShowLocationStateChanged
     {//GEN-HEADEREND:event_jToggleButtonShowLocationStateChanged
-        showLocation(jToggleButtonShowLocation.isSelected());
+        showAttribute(jToggleButtonShowLocation, jTextPaneLocation, imagePanel.getPlace());
     }//GEN-LAST:event_jToggleButtonShowLocationStateChanged
 
     private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonNextActionPerformed
@@ -404,7 +381,15 @@ public class MACMainWindow extends javax.swing.JFrame
         shuffleImages();
     }//GEN-LAST:event_jButtonShuffleActionPerformed
 
-    private void hideAll()
+    private void showAttribute(final JToggleButton button, final JTextPane pane, final String attribute)
+    {
+        if(button.isSelected())
+            pane.setText(attribute);
+        else
+            pane.setText("");
+    }
+    
+    private void hideAllAttributes()
     {
         jToggleButtonShowTitle.setSelected(false);
         jToggleButtonShowArtist.setSelected(false);
@@ -412,76 +397,27 @@ public class MACMainWindow extends javax.swing.JFrame
         jToggleButtonShowLocation.setSelected(false);
     }
     
-    private void showTitle(final boolean show)
-    {
-        if(show)
-            jTextPaneTitle.setText(imagePanel.getTitle());
-        else
-            jTextPaneTitle.setText("");
-    }
-    
-    private void toggleTitle()
-    {
-        jToggleButtonShowTitle.setSelected(!jToggleButtonShowTitle.isSelected());
-    }
-    
-    private void showArtist(final boolean show)
-    {
-        if(show)
-            jTextPaneArtist.setText(imagePanel.getArtist());
-        else
-            jTextPaneArtist.setText("");
-    }
-    
-    private void toggleArtist()
-    {
-        jToggleButtonShowArtist.setSelected(!jToggleButtonShowArtist.isSelected());
-    }
-    
-    private void showStyle(final boolean show)
-    {
-        if(show)
-            jTextPaneStyle.setText(imagePanel.getStyle());
-        else
-            jTextPaneStyle.setText("");
-    }
-    
-    private void toggleStyle()
-    {
-        jToggleButtonShowStyle.setSelected(!jToggleButtonShowStyle.isSelected());
-    }
-    
-    private void showLocation(final boolean show)
-    {
-        if(show)
-            jTextPaneLocation.setText(imagePanel.getPlace());
-        else
-            jTextPaneLocation.setText("");
-    }
-    
-    private void toggleLocation()
-    {
-        jToggleButtonShowLocation.setSelected(!jToggleButtonShowLocation.isSelected());
-    }
+    private void toggleToggleButton(final javax.swing.JToggleButton button)
+    { button.setSelected(!button.isSelected()); }
     
     private void nextImage()
     {
         imagePanel.next();
         jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAll();
+        hideAllAttributes();
     }
     
     private void lastImage()
     {
         imagePanel.last();
         jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAll();
+        hideAllAttributes();
     }
     
     private void shuffleImages()
     {
         imagePanel.shuffle();
-        hideAll();
+        hideAllAttributes();
     }
     
     /**
@@ -504,24 +440,21 @@ public class MACMainWindow extends javax.swing.JFrame
     private javax.swing.JButton jButtonLast;
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonShuffle;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelArtist;
     private javax.swing.JPanel jPanelLocation;
     private javax.swing.JPanel jPanelNavigation;
     private javax.swing.JPanel jPanelStyle;
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JPanel jPanelUI;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JScrollPane jScrollPaneArtist;
+    private javax.swing.JScrollPane jScrollPaneLocation;
+    private javax.swing.JScrollPane jScrollPaneStyle;
+    private javax.swing.JScrollPane jScrollPaneTitle;
+    private javax.swing.JSplitPane jSplitPaneMain;
     private javax.swing.JTextPane jTextPaneArtist;
     private javax.swing.JTextPane jTextPaneLocation;
     private javax.swing.JTextPane jTextPaneStyle;
     private javax.swing.JTextPane jTextPaneTitle;
-    private javax.swing.JToggleButton jToggleButtonShow4;
     private javax.swing.JToggleButton jToggleButtonShowArtist;
     private javax.swing.JToggleButton jToggleButtonShowLocation;
     private javax.swing.JToggleButton jToggleButtonShowStyle;

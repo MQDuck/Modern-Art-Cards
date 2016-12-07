@@ -22,7 +22,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
@@ -43,31 +42,31 @@ public class MACMainWindow extends javax.swing.JFrame
         initComponents();
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("RIGHT"), "right pressed");
         imagePanel.getActionMap().put("right pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { nextImage(); } });
+            {@Override public void actionPerformed(ActionEvent evt) { nextImage(); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("LEFT"), "left pressed");
         imagePanel.getActionMap().put("left pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { lastImage(); } });
+            {@Override public void actionPerformed(ActionEvent evt) { lastImage(); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("S"), "S pressed");
         imagePanel.getActionMap().put("S pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { shuffleImages(); } });
+            {@Override public void actionPerformed(ActionEvent evt) { shuffleImages(); } });
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("1"), "1 pressed");
         imagePanel.getActionMap().put("1 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowTitle); } });
+            {@Override public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowTitle); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("2"), "2 pressed");
         imagePanel.getActionMap().put("2 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowArtist); } });
+            {@Override public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowArtist); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("3"), "3 pressed");
         imagePanel.getActionMap().put("3 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowStyle); } });
+            {@Override public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowStyle); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("4"), "4 pressed");
         imagePanel.getActionMap().put("4 pressed", new AbstractAction()
-            { public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowLocation); } });
+            {@Override public void actionPerformed(ActionEvent evt) { toggleToggleButton(jToggleButtonShowLocation); }});
         
         jPanelLocation.setVisible(imagePanel.getPlace() != null);
         
@@ -118,6 +117,7 @@ public class MACMainWindow extends javax.swing.JFrame
         jSplitPaneMain.setDividerLocation(500);
         jSplitPaneMain.setResizeWeight(1.0);
         jSplitPaneMain.setContinuousLayout(true);
+        jSplitPaneMain.setFocusable(false);
 
         imagePanel.setBackground(new java.awt.Color(0, 0, 0));
         imagePanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));

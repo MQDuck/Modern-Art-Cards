@@ -37,7 +37,7 @@ public class MACImagePanel extends JPanel
     
     public MACImagePanel()
     {
-        images.add(new MACImage(
+        /*images.add(new MACImage(
             "Bath_of_Psyche.jpeg",
             "The Bath of Psyche",
             "Leighton, Frederic",
@@ -127,7 +127,145 @@ public class MACImagePanel extends JPanel
             "Harmony_in_Red.jpeg",
             "Harmony in Red (The Dessert)",
             "Matisse, Henri",
+            "Modernism"));*/
+        images.add(new MACImage(
+            "Sleeping_Muse.jpeg",
+            "Sleeping Muse I",
+            "Brâncuși, Constantin",
             "Modernism"));
+        images.add(new MACImage(
+            "Les_Demoiselles.jpeg",
+            "Les Demoiselles d’Avignon",
+            "Picasso, Pablo",
+            "Proto-Cubism"));
+        images.add(new MACImage(
+            "The_Portuguese.jpeg",
+            "The Portuguese",
+            "Braque, Georges",
+            "Analytic Cubism"));
+        images.add(new MACImage(
+            "Fruit_Dish_and_Glass.jpeg",
+            "Fruit Dish and Glass",
+            "Braque, Georges",
+            "Synthetic Cubism"));
+        images.add(new MACImage(
+            "Maquette_for_Guitar.jpeg",
+            "Maquette for Guitar",
+            "Picasso, Pablo",
+            "Synthetic Cubism"));
+        images.add(new MACImage(
+            "The_Table.jpeg",
+            "The Table",
+            "Gris, Juan",
+            "Synthetic Cubism"));
+        images.add(new MACImage(
+            "Medrano_II.jpeg",
+            "Médrano II",
+            "Archipenko, Alexander",
+            "Synthetic Cubism"));
+        images.add(new MACImage(
+            "Disks_of_Newton.jpeg",
+            "Disks of Newton (Study for Fugue in Two Colors)",
+            "Kupka, František",
+            "Orphism / Simultaneity"));
+        images.add(new MACImage(
+            "Street_Dresden.jpeg",
+            "Street, Dresden",
+            "Kirchner, Ernst Ludwig",
+            "Expressionism: The Bridge (Die Brück)"));
+        images.add(new MACImage(
+            "Female_Dancer.jpeg",
+            "Female Dancer",
+            "Nolde, Emil",
+            "Expressionism: The Bridge (Die Brück)"));
+        images.add(new MACImage(
+            "Composition_VII.jpeg",
+            "Composition VII",
+            "Kandinsky, Wassily",
+            "Expressionism: The Blue RIder (Der Blaue Reiter)"));
+        images.add(new MACImage(
+            "Fate_of_the_Animals.jpeg",
+            "Fate of the Animals",
+            "Marc, Franz",
+            "Expressionism: The Bridge (Die Brück)"));
+        images.add(new MACImage(
+            "AEG_Turbine_Factory.jpeg",
+            "AEG Turbine Factory",
+            "Behrens, Peter",
+            "Early Modern Architecture",
+            "Berlin, Germany"));
+        images.add(new MACImage(
+            "Guaranty_Trust_Building.jpeg",
+            "Guaranty Trust Building",
+            "Sullivan, Louis",
+            "Early Modern Architecture (Chicago Style)",
+            "Buffalo, New York"));
+        images.add(new MACImage(
+            "Robie_House.jpeg",
+            "Robie House",
+            "Frank Lloyd Wright",
+            "Early Modern Architecture (Prairie Style)",
+            "Chicago, Illinois"));
+        images.add(new MACImage(
+            "Pennsylvania_Station.jpeg",
+            "Pennsylvania Station",
+            "McKim, Mead & White",
+            "Early Modern Architecture (Modern Classicism)"));
+        images.add(new MACImage(
+            "The_Melancholy_and_Mystery.jpeg",
+            "The Melancholy and Mystery of a Street",
+            "Giorgio De Chirico",
+            "Metaphysical"));
+        images.add(new MACImage(
+            "Dynamic_Hieroglyphic.jpeg",
+            "Dynamic Hieroglyphic of the Bal Tabarin",
+            "Severini, Gino",
+            "Futurism"));
+        images.add(new MACImage(
+            "Ezra_Pound.jpg",
+            "Ezra Pound",
+            "Coburn, Alvin Langdon",
+            "Vorticism"));
+        images.add(new MACImage(
+            "Black_Square.jpeg",
+            "Black Square",
+            "Malevich, Kazimir",
+            "Suprematism"));
+        images.add(new MACImage(
+            "The_Volunteers_from_War.jpeg",
+            "The Volunteers from War",
+            "Kollwitz, Käthe",
+            "November Group / Expressionism / German Social Realism"));
+        images.add(new MACImage(
+            "Self-Portrait_in_Tuxedo.jpeg",
+            "Self-Portrait in Tuxedo",
+            "Beckmann, Max",
+            "New Objectivity"));
+        images.add(new MACImage(
+            "Nude.jpeg",
+            "Nude",
+            "Modigliani, Amedeo",
+            "School of Paris: The Mandits (The Cursed)"));
+        images.add(new MACImage(
+            "La_rue_du_Mont-Cenis.jpeg",
+            "La rue du Mont-Cenis",
+            "Utrillo, Maurice",
+            "School of Paris: The Mandits (The Cursed)"));
+        images.add(new MACImage(
+            "Music_Lesson.jpeg",
+            "Music Lesson",
+            "Matisse, Henri",
+            "Post-WWI Modernism"));
+        images.add(new MACImage(
+            "Olga_Seated.jpeg",
+            "Olga Seated in an Armchair",
+            "Picasso, Pablo",
+            "Post-WWI Modernism"));
+        images.add(new MACImage(
+            "Guernica.jpeg",
+            "Guernica",
+            "Picasso, Pablo",
+            "Post-WWI Modernism"));
             
         images.loadImages(true);
         index = 0;

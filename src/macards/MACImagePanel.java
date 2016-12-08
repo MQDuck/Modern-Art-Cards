@@ -19,6 +19,7 @@
 package macards;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JPanel;
@@ -316,5 +317,9 @@ public class MACImagePanel extends JPanel
         else
             g.drawImage(current.getImage(), (int)(getWidth() - current.getImage().getWidth() * ratioHeight) / 2, 0,
                         (int)(current.getImage().getWidth() * ratioHeight), getHeight(), this);
+        //if(ratioWidth < ratioHeight)
+        //    g.drawImage(current.getImage().getScaledInstance(getHeight(), -1, Image.SCALE_SMOOTH), 0, 0, this);
+        //else
+        //    g.drawImage(current.getImage().getScaledInstance(-1, getHeight(), Image.SCALE_SMOOTH), 0, 0, this);
     }
 }

@@ -223,7 +223,7 @@ public class MACImagePanel extends JPanel
             "Severini, Gino",
             "Futurism"));
         images.add(new MACImage(
-            "Ezra_Pound.jpg",
+            "Ezra_Pound.png",
             "Ezra Pound",
             "Coburn, Alvin Langdon",
             "Vorticism"));
@@ -317,9 +317,11 @@ public class MACImagePanel extends JPanel
         else
             g.drawImage(current.getImage(), (int)(getWidth() - current.getImage().getWidth() * ratioHeight) / 2, 0,
                         (int)(current.getImage().getWidth() * ratioHeight), getHeight(), this);
-        //if(ratioWidth < ratioHeight)
-        //    g.drawImage(current.getImage().getScaledInstance(getHeight(), -1, Image.SCALE_SMOOTH), 0, 0, this);
-        //else
-        //    g.drawImage(current.getImage().getScaledInstance(-1, getHeight(), Image.SCALE_SMOOTH), 0, 0, this);
+        /*if(ratioWidth < ratioHeight)
+            g.drawImage(current.getImage().getScaledInstance(getWidth(), -1, Image.SCALE_REPLICATE), 0,
+                        (int)(getHeight() - current.getImage().getHeight() * ratioWidth) / 2, this);
+        else
+            g.drawImage(current.getImage().getScaledInstance(-1, getHeight(), Image.SCALE_REPLICATE),
+                        (int)(getWidth() - current.getImage().getWidth() * ratioHeight) / 2, 0, this);*/
     }
 }

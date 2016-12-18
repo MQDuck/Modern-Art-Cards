@@ -42,15 +42,15 @@ public class MACMainWindow extends javax.swing.JFrame
         initComponents();
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("RIGHT"), "right pressed");
         imagePanel.getActionMap().put("right pressed", new AbstractAction()
-            {@Override public void actionPerformed(ActionEvent evt) { nextImage(); }});
+            {@Override public void actionPerformed(ActionEvent evt) { nextCard(); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("LEFT"), "left pressed");
         imagePanel.getActionMap().put("left pressed", new AbstractAction()
-            {@Override public void actionPerformed(ActionEvent evt) { lastImage(); }});
+            {@Override public void actionPerformed(ActionEvent evt) { lastCard(); }});
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("S"), "S pressed");
         imagePanel.getActionMap().put("S pressed", new AbstractAction()
-            {@Override public void actionPerformed(ActionEvent evt) { shuffleImages(); } });
+            {@Override public void actionPerformed(ActionEvent evt) { shuffleCards(); } });
         
         imagePanel.getInputMap().put(javax.swing.KeyStroke.getKeyStroke("1"), "1 pressed");
         imagePanel.getActionMap().put("1 pressed", new AbstractAction()
@@ -368,17 +368,17 @@ public class MACMainWindow extends javax.swing.JFrame
 
     private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonNextActionPerformed
     {//GEN-HEADEREND:event_jButtonNextActionPerformed
-        nextImage();
+        nextCard();
     }//GEN-LAST:event_jButtonNextActionPerformed
 
     private void jButtonLastActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonLastActionPerformed
     {//GEN-HEADEREND:event_jButtonLastActionPerformed
-        lastImage();
+        lastCard();
     }//GEN-LAST:event_jButtonLastActionPerformed
 
     private void jButtonShuffleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonShuffleActionPerformed
     {//GEN-HEADEREND:event_jButtonShuffleActionPerformed
-        shuffleImages();
+        shuffleCards();
     }//GEN-LAST:event_jButtonShuffleActionPerformed
 
     private void showAttribute(final JToggleButton button, final JTextPane pane, final String attribute)
@@ -400,24 +400,28 @@ public class MACMainWindow extends javax.swing.JFrame
     private void toggleToggleButton(final javax.swing.JToggleButton button)
     { button.setSelected(!button.isSelected()); }
     
-    private void nextImage()
+    private void loadCard()
+    {
+        jPanelLocation.setVisible(imagePanel.getPlace() != null);
+        hideAllAttributes();
+    }
+    
+    private void nextCard()
     {
         imagePanel.next();
-        jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAllAttributes();
+        loadCard();
     }
     
-    private void lastImage()
+    private void lastCard()
     {
         imagePanel.last();
-        jPanelLocation.setVisible(imagePanel.getPlace() != null);
-        hideAllAttributes();
+        loadCard();
     }
     
-    private void shuffleImages()
+    private void shuffleCards()
     {
         imagePanel.shuffle();
-        hideAllAttributes();
+        loadCard();
     }
     
     /**
@@ -426,13 +430,7 @@ public class MACMainWindow extends javax.swing.JFrame
     public static void main(String args[])
     {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new MACMainWindow().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new MACMainWindow().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

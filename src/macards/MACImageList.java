@@ -34,6 +34,6 @@ public class MACImageList extends ArrayList<MACImage>
             loadImages();
     }
     
-    private void loadImages() { stream().forEach((image) -> image.loadImage()); }
+    private void loadImages() { stream().forEach((image) -> image.getImage()); }
 
 }

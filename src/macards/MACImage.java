@@ -31,10 +31,8 @@ import javax.imageio.ImageIO;
 public class MACImage
 {   
     private BufferedImage image = null;
-    private boolean loading = false;
     final public String file, title, artist, style, place;
-    
-    private static final int LOAD_WAIT_SLEEP_TIME = 10;
+    private Thread loader;
     
     MACImage(final String fl, final String ttl, final String artst, final String stl, final String plc)
     {
@@ -56,37 +54,22 @@ public class MACImage
     
     public final BufferedImage getImage()
     {
-        loadImage();
+        if(image == null)
+        {
+            if(loader == null)
+            {
+                loader = new Thread(() ->
+                {
+                    System.out.println("loading " + file);
+                    try { image = ImageIO.read(getClass().getResource(file)); }
+                    catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
+                });
+                loader.start();
+            }
+            try { loader.join(); }
+            catch (InterruptedException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
+            loader = null;
+        }
         return image;
-    }
-    
-    public void loadImage()
-    {
-        if(image != null)
-            return;
-        if(loading)
-        {
-            waitForImageLoad();
-            return;
-        }
-        
-        loading = true;
-        System.out.println("loading " + file);
-        try { image = ImageIO.read(getClass().getResource(file)); }
-        catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
-        loading = false;
-    }
-    
-    private void waitForImageLoad()
-    {
-        try
-        {
-            while(image == null)
-                Thread.sleep(LOAD_WAIT_SLEEP_TIME);
-        }
-        catch(InterruptedException ex)
-        {
-            Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

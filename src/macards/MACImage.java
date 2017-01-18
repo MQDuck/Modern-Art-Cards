@@ -54,22 +54,13 @@ public class MACImage
     
     public final BufferedImage getImage()
     {
-        if(image == null)
+        if(image == null) synchronized(this)
         {
-            if(loader == null)
-            {
-                loader = new Thread(() ->
-                {
-                    System.out.println("loading " + file);
-                    try { image = ImageIO.read(getClass().getResource(file)); }
-                    catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
-                });
-                loader.start();
-            }
-            try { loader.join(); }
-            catch (InterruptedException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
-            loader = null;
+            System.out.println("loading " + file);
+            try { image = ImageIO.read(getClass().getResource(file)); }
+            catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
         }
+        
         return image;
     }
 }

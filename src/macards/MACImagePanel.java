@@ -32,9 +32,9 @@ import javax.swing.JPanel;
 public class MACImagePanel extends JPanel
 {
     //public ArrayList<MACImage> images = new ArrayList<>();
-    public MACImageList images = new MACImageList();
+    public MACCardList images = new MACCardList();
     int index;
-    MACImage current;
+    MACCard current;
     
     public MACImagePanel()
     {
@@ -129,140 +129,140 @@ public class MACImagePanel extends JPanel
             "Harmony in Red (The Dessert)",
             "Matisse, Henri",
             "Modernism"));*/
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Sleeping_Muse.jpeg",
             "Sleeping Muse I",
             "Brâncuși, Constantin",
             "Modernism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Les_Demoiselles.jpeg",
             "Les Demoiselles d’Avignon",
             "Picasso, Pablo",
             "Proto-Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "The_Portuguese.jpeg",
             "The Portuguese",
             "Braque, Georges",
             "Analytic Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Fruit_Dish_and_Glass.jpeg",
             "Fruit Dish and Glass",
             "Braque, Georges",
             "Synthetic Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Maquette_for_Guitar.jpeg",
             "Maquette for Guitar",
             "Picasso, Pablo",
             "Synthetic Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "The_Table.jpeg",
             "The Table",
             "Gris, Juan",
             "Synthetic Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Medrano_II.jpeg",
             "Médrano II",
             "Archipenko, Alexander",
             "Synthetic Cubism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Disks_of_Newton.jpeg",
             "Disks of Newton (Study for Fugue in Two Colors)",
             "Kupka, František",
             "Orphism / Simultaneity"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Street_Dresden.jpeg",
             "Street, Dresden",
             "Kirchner, Ernst Ludwig",
             "Expressionism: The Bridge (Die Brück)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Female_Dancer.jpeg",
             "Female Dancer",
             "Nolde, Emil",
             "Expressionism: The Bridge (Die Brück)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Composition_VII.jpeg",
             "Composition VII",
             "Kandinsky, Wassily",
             "Expressionism: The Blue RIder (Der Blaue Reiter)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Fate_of_the_Animals.jpeg",
             "Fate of the Animals",
             "Marc, Franz",
             "Expressionism: The Bridge (Die Brück)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "AEG_Turbine_Factory.jpeg",
             "AEG Turbine Factory",
             "Behrens, Peter",
             "Early Modern Architecture",
             "Berlin, Germany"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Guaranty_Trust_Building.jpeg",
             "Guaranty Trust Building",
             "Sullivan, Louis",
             "Early Modern Architecture (Chicago Style)",
             "Buffalo, New York"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Robie_House.jpeg",
             "Robie House",
             "Frank Lloyd Wright",
             "Early Modern Architecture (Prairie Style)",
             "Chicago, Illinois"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Pennsylvania_Station.jpeg",
             "Pennsylvania Station",
             "McKim, Mead & White",
             "Early Modern Architecture (Modern Classicism)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "The_Melancholy_and_Mystery.jpeg",
             "The Melancholy and Mystery of a Street",
             "Giorgio De Chirico",
             "Metaphysical"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Dynamic_Hieroglyphic.jpeg",
             "Dynamic Hieroglyphic of the Bal Tabarin",
             "Severini, Gino",
             "Futurism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Ezra_Pound.png",
             "Ezra Pound",
             "Coburn, Alvin Langdon",
             "Vorticism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Black_Square.jpeg",
             "Black Square",
             "Malevich, Kazimir",
             "Suprematism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "The_Volunteers_from_War.jpeg",
             "The Volunteers from War",
             "Kollwitz, Käthe",
             "November Group / Expressionism / German Social Realism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Self-Portrait_in_Tuxedo.jpeg",
             "Self-Portrait in Tuxedo",
             "Beckmann, Max",
             "New Objectivity"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Nude.jpeg",
             "Nude",
             "Modigliani, Amedeo",
             "School of Paris: The Mandits (The Cursed)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "La_rue_du_Mont-Cenis.jpeg",
             "La rue du Mont-Cenis",
             "Utrillo, Maurice",
             "School of Paris: The Mandits (The Cursed)"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Music_Lesson.jpeg",
             "Music Lesson",
             "Matisse, Henri",
             "Post-WWI Modernism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Olga_Seated.jpeg",
             "Olga Seated in an Armchair",
             "Picasso, Pablo",
             "Post-WWI Modernism"));
-        images.add(new MACImage(
+        images.add(new MACCard(
             "Guernica.jpeg",
             "Guernica",
             "Picasso, Pablo",

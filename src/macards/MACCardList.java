@@ -24,7 +24,7 @@ import java.util.ArrayList;
  *
  * @author Jeffrey Thomas Piercy <mqduck@mqduck.net>
  */
-public class MACImageList extends ArrayList<MACImage>
+public class MACCardList extends ArrayList<MACCard>
 {
     public void loadImages(final boolean createThread)
     {

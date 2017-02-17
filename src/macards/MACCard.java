@@ -28,13 +28,13 @@ import javax.imageio.ImageIO;
  *
  * @author Jeffrey Thomas Piercy <mqduck@mqduck.net>
  */
-public class MACImage
+public class MACCard
 {   
     private BufferedImage image = null;
     final public String file, title, artist, style, place;
     private Thread loader;
     
-    MACImage(final String fl, final String ttl, final String artst, final String stl, final String plc)
+    MACCard(final String fl, final String ttl, final String artst, final String stl, final String plc)
     {
         file = fl;
         title = ttl;
@@ -43,7 +43,7 @@ public class MACImage
         place = plc;
     }
     
-    MACImage(final String fl, final String ttl, final String artst, final String stl)
+    MACCard(final String fl, final String ttl, final String artst, final String stl)
     {
         file = fl;
         title = ttl;
@@ -58,9 +58,8 @@ public class MACImage
         {
             System.out.println("loading " + file);
             try { image = ImageIO.read(getClass().getResource(file)); }
-            catch(IOException ex) { Logger.getLogger(MACImage.class.getName()).log(Level.SEVERE, null, ex); }
+            catch(IOException ex) { Logger.getLogger(MACCard.class.getName()).log(Level.SEVERE, null, ex); }
         }
-        
         return image;
     }
 }
